@@ -18,7 +18,7 @@ Configuration file for vim is located in:
 ```
 $ cat ~/.vimrc
 ```
-## Configure SSH Keys  
+### Configure SSH Keys  
 Default private and public keys are located in ~/.ssh/id_rsa for the private key and ~/.ssh/id_rsa.pub for the public key
 
 Generate ssh key:
@@ -45,4 +45,41 @@ $ ssh-add
 Troubleshooting ssh keys access.  Add -v, -vv, -vvv for verbose information
 ```
 $ ssh -v user@rmote.host.com
+```
+
+### Diagnostic Reports for Support Case
+Use the web console or generate a sos report
+
+Generatiing a sos report.  Make sos is installed
+```
+# dnf install sos
+# sos report
+# ls -l /var/tmp
+```
+
+Obfuscate personal information
+```
+# sos clear /var/tmp/some-sos-report.tar.xz*
+```
+
+### Red Hat Insights
+With RHEL 9 the insights client should be installed
+
+
+Registering RHEL with userid and password or activation key.  If using SCA no need to subscribe system.
+```
+# subscription-manager register --org=12345678 --activationkey=you-activation-key
+```
+Install, regsister Insights
+```
+# dnf install insights-client
+# insights-client --register
+```
+
+To "force" insights data collection, simply rerun the insights client
+
+
+Run insights clients to collect data
+```
+# insights-client
 ```
